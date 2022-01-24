@@ -15,24 +15,6 @@ router.post('/connections', function(req, res, next) {
       console.log("*** Invitation Request from invitee");
       console.log("Connection ID=", req.body?.connection_id);
       console.log("Send Accept-Requst to invitee");
-      //*** Use your own ACA-Py server public IP for this next line
-      restEndpoint = 'http://20.121.221.97:8080';
-      //
-      restURL = restEndpoint + '/connections/' + req.body?.connection_id + '/accept-request?my_endpoint=' + encodeURI(restEndpoint);
-      restData = {};
-      restHeaders = {
-        headers: {
-        }
-      };
-      axios
-        .post(restURL, restData, restHeaders)
-        .then(res => {
-          console.log('statusCode: ${res.status}');
-        })
-        .catch(error => {
-          console.error(error);
-        })
-
       break;
     case "response-sent":
       console.log("*** Invitation Response sent to invitee");
